@@ -24,19 +24,20 @@
 
 <h3 align="center">A passionate data scientist and software developer based in Barcelona. </h3>
 <br>
-<div align="left">
+<div style="padding-left: 20px;">
 
-💻 I'm currently working on **Web Development for Datathons using Docker, SvelteKit, and PocketBase**
+> 💻 I'm currently working on **Web Development for Datathons using Docker, SvelteKit, and PocketBase**
+>
+> 📚 I'm currently learning **MLOps, Docker, and Cloud Infrastructure**
+>
+> 💬 Ask me about **Python, Data Science, Competitive Programming, or Web Scraping**
+>
+> ⚡ Fun facts about me:
+> - 🎓 **Double degree student in Data Science and Biomedical Engineering at CFIS-UPC**
+> - 🌍 **Represented Spain at International Informatics Olympiad by Teams**
+> - 🥇 **Won multiple medals in Math and Programming competitions**
+> - 📖 **Founded and organize the UP+C Integration Bee**
 
-📚 I'm currently learning **MLOps, Docker, and Cloud Infrastructure**
-
-💬 Ask me about **Python, Data Science, Competitive Programming, or Web Scraping**
-
-⚡ Fun facts:
-- 🎓 **Double degree student in Data Science and Biomedical Engineering at CFIS-UPC**
-- 🌍 **Represented Spain at International Informatics Olympiad by Teams**
-- 🥇 **Won multiple medals in Math and Programming competitions** 
-- 📖 **Founded and organize the UP+C Integration Bee**
 
 </div>
 
