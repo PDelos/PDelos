@@ -15,7 +15,7 @@
         <br>
         <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FPDelos%2FPDelos&label=VISITORS&labelColor=%23000&countColor=%230A0209" /> 
         <br>
-        <a href="https://www.linkedin.com/in/Anmol-Baranwal/"><img src="https://img.shields.io/badge/LinkedIn-d5d5d5?style=for-the-badge&logo=linkedin&logoColor=0A0209" alt="profile of LinkedIn with username Pol-de-los-Santos-Subirats" /></a>
+        <a href="https://www.linkedin.com/in/pol-de-los-santos-subirats/"><img src="https://img.shields.io/badge/LinkedIn-d5d5d5?style=for-the-badge&logo=linkedin&logoColor=0A0209" alt="profile of LinkedIn with username Pol-de-los-Santos-Subirats" /></a>
         <a href="mailto:delossantospol001@gmail.com"><img src="https://img.shields.io/badge/Personal-d5d5d5?style=for-the-badge&logo=gmail&logoColor=0A0209" alt="email of Pol i.e.   delossantospol001@gmail.com" /></a>
         <a href="mailto:pol.de.los.santos@estudiantat.upc.edu"><img src="https://img.shields.io/badge/University-d5d5d5?style=for-the-badge&logo=gmail&logoColor=0A0209" alt="email of Pol i.e.   pol.de.los.santos@estudiantat.upc.edu" /></a>
         <a href="https://discordapp.com/users/541670512686923817"><img src="https://img.shields.io/badge/Discord-d5d5d5?style=for-the-badge&logo=discord&logoColor=0A0209" alt="profile of Discord with username 𝕊ඞ𝕦𝕔𝟛(bigs4uc3)" ></a>
