@@ -6,6 +6,28 @@
   "strict": 0.6299,
   "any_win": 0.8581
  },
+ "seed_curve": [
+  {
+   "train_rows": 1000,
+   "test_strict": 0.296,
+   "test_any_win": 0.6819
+  },
+  {
+   "train_rows": 2000,
+   "test_strict": 0.4361,
+   "test_any_win": 0.7739
+  },
+  {
+   "train_rows": 3000,
+   "test_strict": 0.5087,
+   "test_any_win": 0.8025
+  },
+  {
+   "train_rows": 4000,
+   "test_strict": 0.5681,
+   "test_any_win": 0.8285
+  }
+ ],
  "baselines": {
   "random": {
    "strict": 0.2482,

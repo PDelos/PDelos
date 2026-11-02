@@ -29,9 +29,13 @@
 <line x1="517.7" x2="517.7" y1="50" y2="270" class="vgrid"/><text x="517.7" y="286" text-anchor="middle" class="lbl">5k</text>
 <line x1="610.0" x2="610.0" y1="50" y2="270" class="vgrid"/><text x="610.0" y="286" text-anchor="middle" class="lbl">6k</text>
 <text x="333" y="308" text-anchor="middle" class="lbl">positions in the train set (0 = random moves)</text>
-<path class="anyw" d="M56.0,125.8 L517.7,81.2"/>
-<path class="strict" d="M56.0,215.4 L517.7,131.4"/>
+<path class="anyw" d="M56.0,125.8 L148.3,120.0 L240.7,99.7 L333.0,93.5 L425.3,87.7 L517.7,81.2"/>
+<path class="strict" d="M56.0,215.4 L148.3,204.9 L240.7,174.1 L333.0,158.1 L425.3,145.0 L517.7,131.4"/>
 <circle cx="56.0" cy="125.8" r="3.5" class="dot2"/><circle cx="56.0" cy="215.4" r="4" class="dot"/>
+<circle cx="148.3" cy="120.0" r="3.5" class="dot2"/><circle cx="148.3" cy="204.9" r="4" class="dot"/>
+<circle cx="240.7" cy="99.7" r="3.5" class="dot2"/><circle cx="240.7" cy="174.1" r="4" class="dot"/>
+<circle cx="333.0" cy="93.5" r="3.5" class="dot2"/><circle cx="333.0" cy="158.1" r="4" class="dot"/>
+<circle cx="425.3" cy="87.7" r="3.5" class="dot2"/><circle cx="425.3" cy="145.0" r="4" class="dot"/>
 <circle cx="517.7" cy="81.2" r="3.5" class="dot2"/><circle cx="517.7" cy="131.4" r="4" class="dot"/>
 <text x="620" y="85.2" class="val2">winning move 85.8%</text><text x="620" y="135.4" class="val">perfect move 63.0%</text>
 </svg>

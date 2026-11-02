@@ -233,7 +233,10 @@ def render_chart() -> None:
     seed_rows = m.get("seed_rows", 1000)
     runs = m["runs"]
     retrains = [r for r in runs if r.get("trained", True)]
-    live = [(0, random_play["strict"], random_play["any_win"], True), (seed_rows, pre["strict"], pre["any_win"], True)] + \
+    # the v1 network retrained from scratch on the first 1k, 2k, ... seed rows (measured once, offline)
+    seed_curve = [(c["train_rows"], c["test_strict"], c["test_any_win"], True) for c in m.get("seed_curve", [])]
+    live = [(0, random_play["strict"], random_play["any_win"], True)] + seed_curve + \
+           [(seed_rows, pre["strict"], pre["any_win"], True)] + \
            [(r["train_rows"], r.get("candidate_strict", r["test_strict"]), r.get("candidate_any_win", r["test_any_win"]),
              r["accepted"]) for r in retrains]
     current_rows = max([p[0] for p in live] + [runs[-1]["train_rows"] if runs else 0])
