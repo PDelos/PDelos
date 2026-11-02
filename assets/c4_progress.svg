@@ -2,42 +2,36 @@
 <style>
 .bg{fill:#ffffff} .title{fill:#1f2328;font-size:15px;font-weight:600} .lbl{fill:#59636e;font-size:11px}
 .val{fill:#cf222e;font-size:12px;font-weight:600} .val2{fill:#9a6700;font-size:12px;font-weight:600}
-.grid{stroke:#d1d9e0;stroke-width:1} .vgrid{stroke:#eaeef2;stroke-width:1} .goal{stroke:#1a7f37;stroke-width:1.2;stroke-dasharray:2 3}
+.grid{stroke:#d1d9e0;stroke-width:1} .vgrid{stroke:#eaeef2;stroke-width:1}
 .strict{fill:none;stroke:#cf222e;stroke-width:2.5;stroke-linejoin:round} .anyw{fill:none;stroke:#bf8700;stroke-width:2;stroke-linejoin:round}
-.exp1{fill:none;stroke:#cf222e;stroke-width:1.4;stroke-dasharray:5 4;opacity:.55} .exp2{fill:none;stroke:#bf8700;stroke-width:1.4;stroke-dasharray:5 4;opacity:.55}
 .dot{fill:#cf222e} .dot2{fill:#bf8700} .rej{fill:#ffffff;stroke:#cf222e;stroke-width:2} .rej2{fill:#ffffff;stroke:#bf8700;stroke-width:2}
 @media (prefers-color-scheme: dark) {
  .bg{fill:#0d1117} .title{fill:#f0f6fc} .lbl{fill:#9198a1} .grid{stroke:#3d444d} .vgrid{stroke:#21262d}
- .val{fill:#ff7b72} .val2{fill:#d29922} .goal{stroke:#3fb950}
- .strict,.exp1{stroke:#ff7b72} .anyw,.exp2{stroke:#d29922} .dot{fill:#ff7b72} .dot2{fill:#d29922}
+ .val{fill:#ff7b72} .val2{fill:#d29922}
+ .strict{stroke:#ff7b72} .anyw{stroke:#d29922} .dot{fill:#ff7b72} .dot2{fill:#d29922}
  .rej{fill:#0d1117;stroke:#ff7b72} .rej2{fill:#0d1117;stroke:#d29922}
 }
 </style>
 <rect width="760" height="320" rx="10" class="bg"/>
 <text x="26" y="26" class="title">Test accuracy as visitors' games grow the train set</text>
-<text x="742" y="26" text-anchor="end" class="lbl">dots: live model · dashed: offline scaling test</text>
-<line x1="56" x2="610" y1="270.0" y2="270.0" class="grid"/><text x="48" y="274.0" text-anchor="end" class="lbl">40%</text>
-<line x1="56" x2="610" y1="233.3" y2="233.3" class="grid"/><text x="48" y="237.3" text-anchor="end" class="lbl">50%</text>
-<line x1="56" x2="610" y1="196.7" y2="196.7" class="grid"/><text x="48" y="200.7" text-anchor="end" class="lbl">60%</text>
-<line x1="56" x2="610" y1="160.0" y2="160.0" class="grid"/><text x="48" y="164.0" text-anchor="end" class="lbl">70%</text>
-<line x1="56" x2="610" y1="123.3" y2="123.3" class="grid"/><text x="48" y="127.3" text-anchor="end" class="lbl">80%</text>
-<line x1="56" x2="610" y1="86.7" y2="86.7" class="grid"/><text x="48" y="90.7" text-anchor="end" class="lbl">90%</text>
+<text x="742" y="26" text-anchor="end" class="lbl">5,000 positions · no retrains yet</text>
+<line x1="56" x2="610" y1="270.0" y2="270.0" class="grid"/><text x="48" y="274.0" text-anchor="end" class="lbl">0%</text>
+<line x1="56" x2="610" y1="226.0" y2="226.0" class="grid"/><text x="48" y="230.0" text-anchor="end" class="lbl">20%</text>
+<line x1="56" x2="610" y1="182.0" y2="182.0" class="grid"/><text x="48" y="186.0" text-anchor="end" class="lbl">40%</text>
+<line x1="56" x2="610" y1="138.0" y2="138.0" class="grid"/><text x="48" y="142.0" text-anchor="end" class="lbl">60%</text>
+<line x1="56" x2="610" y1="94.0" y2="94.0" class="grid"/><text x="48" y="98.0" text-anchor="end" class="lbl">80%</text>
 <line x1="56" x2="610" y1="50.0" y2="50.0" class="grid"/><text x="48" y="54.0" text-anchor="end" class="lbl">100%</text>
-<line x1="56.0" x2="56.0" y1="50" y2="270" class="vgrid"/><text x="56.0" y="286" text-anchor="middle" class="lbl">1k</text>
-<line x1="111.6" x2="111.6" y1="50" y2="270" class="vgrid"/><text x="111.6" y="286" text-anchor="middle" class="lbl">2k</text>
-<line x1="185.1" x2="185.1" y1="50" y2="270" class="vgrid"/><text x="185.1" y="286" text-anchor="middle" class="lbl">5k</text>
-<line x1="240.7" x2="240.7" y1="50" y2="270" class="vgrid"/><text x="240.7" y="286" text-anchor="middle" class="lbl">10k</text>
-<line x1="296.3" x2="296.3" y1="50" y2="270" class="vgrid"/><text x="296.3" y="286" text-anchor="middle" class="lbl">20k</text>
-<line x1="369.7" x2="369.7" y1="50" y2="270" class="vgrid"/><text x="369.7" y="286" text-anchor="middle" class="lbl">50k</text>
-<line x1="425.3" x2="425.3" y1="50" y2="270" class="vgrid"/><text x="425.3" y="286" text-anchor="middle" class="lbl">100k</text>
-<line x1="480.9" x2="480.9" y1="50" y2="270" class="vgrid"/><text x="480.9" y="286" text-anchor="middle" class="lbl">200k</text>
-<line x1="554.4" x2="554.4" y1="50" y2="270" class="vgrid"/><text x="554.4" y="286" text-anchor="middle" class="lbl">500k</text>
-<line x1="610.0" x2="610.0" y1="50" y2="270" class="vgrid"/><text x="610.0" y="286" text-anchor="middle" class="lbl">1M</text>
-<text x="333" y="308" text-anchor="middle" class="lbl">positions in the train set (log scale)</text>
-<line x1="56" x2="610" y1="68.3" y2="68.3" class="goal"/><text x="62" y="63.3" class="lbl">goal 95%</text>
-<path class="exp2" d="M185.1,102.0 L273.2,85.0 L351.8,73.7 L433.0,68.5"/>
-<path class="exp1" d="M185.1,185.7 L273.2,141.1 L351.8,115.2 L433.0,102.3"/>
-<circle cx="185.1" cy="102.0" r="3.5" class="dot2"/><circle cx="185.1" cy="185.7" r="4" class="dot"/>
-<text x="620" y="106.0" class="val2">winning move 85.8%</text><text x="620" y="189.7" class="val">perfect move 63.0%</text>
-<text x="620" y="124.3" class="lbl">dashed: scaling test</text>
+<line x1="56.0" x2="56.0" y1="50" y2="270" class="vgrid"/><text x="56.0" y="286" text-anchor="middle" class="lbl">0</text>
+<line x1="148.3" x2="148.3" y1="50" y2="270" class="vgrid"/><text x="148.3" y="286" text-anchor="middle" class="lbl">1k</text>
+<line x1="240.7" x2="240.7" y1="50" y2="270" class="vgrid"/><text x="240.7" y="286" text-anchor="middle" class="lbl">2k</text>
+<line x1="333.0" x2="333.0" y1="50" y2="270" class="vgrid"/><text x="333.0" y="286" text-anchor="middle" class="lbl">3k</text>
+<line x1="425.3" x2="425.3" y1="50" y2="270" class="vgrid"/><text x="425.3" y="286" text-anchor="middle" class="lbl">4k</text>
+<line x1="517.7" x2="517.7" y1="50" y2="270" class="vgrid"/><text x="517.7" y="286" text-anchor="middle" class="lbl">5k</text>
+<line x1="610.0" x2="610.0" y1="50" y2="270" class="vgrid"/><text x="610.0" y="286" text-anchor="middle" class="lbl">6k</text>
+<text x="333" y="308" text-anchor="middle" class="lbl">positions in the train set (0 = random moves)</text>
+<path class="anyw" d="M56.0,125.8 L517.7,81.2"/>
+<path class="strict" d="M56.0,215.4 L517.7,131.4"/>
+<circle cx="56.0" cy="125.8" r="3.5" class="dot2"/><circle cx="56.0" cy="215.4" r="4" class="dot"/>
+<circle cx="517.7" cy="81.2" r="3.5" class="dot2"/><circle cx="517.7" cy="131.4" r="4" class="dot"/>
+<text x="620" y="85.2" class="val2">winning move 85.8%</text><text x="620" y="135.4" class="val">perfect move 63.0%</text>
 </svg>

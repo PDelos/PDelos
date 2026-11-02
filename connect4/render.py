@@ -226,59 +226,48 @@ def render_mind(state: dict) -> None:
 
 
 def render_chart() -> None:
-    """Test accuracy against train-set size: the offline scaling test as the expected path,
-    the live model's nightly results on top."""
+    """Test accuracy against train-set size, from random play at 0 positions up to the live model."""
     m = load_metrics()
     pre = m.get("pretrained") or {"strict": 0, "any_win": 0}
+    random_play = m.get("baselines", {}).get("random", {"strict": 0, "any_win": 0})
     seed_rows = m.get("seed_rows", 1000)
-    scaling = m.get("scaling", [])
     runs = m["runs"]
     retrains = [r for r in runs if r.get("trained", True)]
-    live = [(seed_rows, pre["strict"], pre["any_win"], True)] + \
+    live = [(0, random_play["strict"], random_play["any_win"], True), (seed_rows, pre["strict"], pre["any_win"], True)] + \
            [(r["train_rows"], r.get("candidate_strict", r["test_strict"]), r.get("candidate_any_win", r["test_any_win"]),
              r["accepted"]) for r in retrains]
-    xs_all = [seed_rows] + [s["train_rows"] for s in scaling] + [p[0] for p in live]
-    xmin = 10 ** math.floor(math.log10(min(xs_all)))
-    xmax = max(10 ** math.ceil(math.log10(max(xs_all) * 1.05)), xmin * 100)
+    current_rows = max([p[0] for p in live] + [runs[-1]["train_rows"] if runs else 0])
+    magnitude = 10 ** math.floor(math.log10(current_rows))
+    tick_step = next(magnitude * f for f in (0.1, 0.2, 0.5, 1, 2, 5) if current_rows / (magnitude * f) <= 6)
+    xmax = tick_step * math.ceil(current_rows * 1.05 / tick_step)
     w, h, left, right, top, bottom = 760, 320, 56, 150, 50, 50
-    lo, hi = 0.4, 1.0
+    lo, hi = 0.0, 1.0
 
     def X(n: float) -> float:
-        return left + (w - left - right) * (math.log10(n) - math.log10(xmin)) / (math.log10(xmax) - math.log10(xmin))
+        return left + (w - left - right) * n / xmax
 
     def Y(v: float) -> float:
         return top + (h - top - bottom) * (1 - (min(max(v, lo), hi) - lo) / (hi - lo))
 
     out = []
-    for k in range(7):
-        v = lo + 0.1 * k
+    for k in range(6):
+        v = lo + 0.2 * k
         out.append(f'<line x1="{left}" x2="{w - right}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" class="grid"/>'
                    f'<text x="{left - 8}" y="{Y(v) + 4:.1f}" text-anchor="end" class="lbl">{v:.0%}</text>')
-    n = xmin
-    while n <= xmax:
-        for mult in (1, 2, 5):
-            t = n * mult
-            if xmin <= t <= xmax:
-                label = f"{t / 1e6:g}M" if t >= 1e6 else (f"{t // 1000:,.0f}k" if t >= 1000 else str(int(t)))
-                out.append(f'<line x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top}" y2="{h - bottom}" class="vgrid"/>'
-                           f'<text x="{X(t):.1f}" y="{h - bottom + 16}" text-anchor="middle" class="lbl">{label}</text>')
-        n *= 10
+    for k in range(round(xmax / tick_step) + 1):
+        t = k * tick_step
+        label = f"{t / 1e6:g}M" if t >= 1e6 else (f"{t / 1000:g}k" if t >= 1000 else f"{t:g}")
+        out.append(f'<line x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top}" y2="{h - bottom}" class="vgrid"/>'
+                   f'<text x="{X(t):.1f}" y="{h - bottom + 16}" text-anchor="middle" class="lbl">{label}</text>')
     out.append(f'<text x="{(left + w - right) / 2:.0f}" y="{h - 12}" text-anchor="middle" class="lbl">'
-               'positions in the train set (log scale)</text>')
-    yv = Y(0.95)
-    out.append(f'<line x1="{left}" x2="{w - right}" y1="{yv:.1f}" y2="{yv:.1f}" class="goal"/>'
-               f'<text x="{left + 6}" y="{yv - 5:.1f}" class="lbl">goal 95%</text>')
+               'positions in the train set (0 = random moves)</text>')
 
     def path(pts, cls):
         return f'<path class="{cls}" d="' + " ".join(f"{'M' if i == 0 else 'L'}{X(a):.1f},{Y(b):.1f}"
                                                      for i, (a, b) in enumerate(pts)) + '"/>'
 
-    if scaling:
-        out.append(path([(s["train_rows"], s["test_any_win"]) for s in scaling], "exp2"))
-        out.append(path([(s["train_rows"], s["test_strict"]) for s in scaling], "exp1"))
-    if len(live) > 1:
-        out.append(path([(p[0], p[2]) for p in live], "anyw"))
-        out.append(path([(p[0], p[1]) for p in live], "strict"))
+    out.append(path([(p[0], p[2]) for p in live], "anyw"))
+    out.append(path([(p[0], p[1]) for p in live], "strict"))
     for rows, st, aw, acc in live:
         cls_s, cls_a = ("dot", "dot2") if acc else ("rej", "rej2")
         out.append(f'<circle cx="{X(rows):.1f}" cy="{Y(aw):.1f}" r="3.5" class="{cls_a}"/>'
@@ -287,23 +276,20 @@ def render_chart() -> None:
     lx = w - right + 10
     out.append(f'<text x="{lx}" y="{Y(last[2]) + 4:.1f}" class="val2">winning move {last[2]:.1%}</text>'
                f'<text x="{lx}" y="{Y(last[1]) + 4:.1f}" class="val">perfect move {last[1]:.1%}</text>')
-    if scaling:
-        out.append(f'<text x="{lx}" y="{Y(scaling[-1]["test_strict"]) + 22:.1f}" class="lbl">dashed: scaling test</text>')
     sub = (f"{len(retrains)} retrains · {runs[-1]['train_rows']:,} positions · "
-           f"{runs[-1]['human_games_total']} games vs visitors" if runs else "dots: live model · dashed: offline scaling test")
+           f"{runs[-1]['human_games_total']} games vs visitors" if runs else f"{seed_rows:,} positions · no retrains yet")
 
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" font-family="ui-sans-serif,system-ui,sans-serif">
 <style>
 .bg{{fill:#ffffff}} .title{{fill:#1f2328;font-size:15px;font-weight:600}} .lbl{{fill:#59636e;font-size:11px}}
 .val{{fill:#cf222e;font-size:12px;font-weight:600}} .val2{{fill:#9a6700;font-size:12px;font-weight:600}}
-.grid{{stroke:#d1d9e0;stroke-width:1}} .vgrid{{stroke:#eaeef2;stroke-width:1}} .goal{{stroke:#1a7f37;stroke-width:1.2;stroke-dasharray:2 3}}
+.grid{{stroke:#d1d9e0;stroke-width:1}} .vgrid{{stroke:#eaeef2;stroke-width:1}}
 .strict{{fill:none;stroke:#cf222e;stroke-width:2.5;stroke-linejoin:round}} .anyw{{fill:none;stroke:#bf8700;stroke-width:2;stroke-linejoin:round}}
-.exp1{{fill:none;stroke:#cf222e;stroke-width:1.4;stroke-dasharray:5 4;opacity:.55}} .exp2{{fill:none;stroke:#bf8700;stroke-width:1.4;stroke-dasharray:5 4;opacity:.55}}
 .dot{{fill:#cf222e}} .dot2{{fill:#bf8700}} .rej{{fill:#ffffff;stroke:#cf222e;stroke-width:2}} .rej2{{fill:#ffffff;stroke:#bf8700;stroke-width:2}}
 @media (prefers-color-scheme: dark) {{
  .bg{{fill:#0d1117}} .title{{fill:#f0f6fc}} .lbl{{fill:#9198a1}} .grid{{stroke:#3d444d}} .vgrid{{stroke:#21262d}}
- .val{{fill:#ff7b72}} .val2{{fill:#d29922}} .goal{{stroke:#3fb950}}
- .strict,.exp1{{stroke:#ff7b72}} .anyw,.exp2{{stroke:#d29922}} .dot{{fill:#ff7b72}} .dot2{{fill:#d29922}}
+ .val{{fill:#ff7b72}} .val2{{fill:#d29922}}
+ .strict{{stroke:#ff7b72}} .anyw{{stroke:#d29922}} .dot{{fill:#ff7b72}} .dot2{{fill:#d29922}}
  .rej{{fill:#0d1117;stroke:#ff7b72}} .rej2{{fill:#0d1117;stroke:#d29922}}
 }}
 </style>
