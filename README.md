@@ -8,6 +8,7 @@
 <a href="mailto:delossantospol001@gmail.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/link-mail.svg"/><img src="assets/light/link-mail.svg" alt="mail" height="40"/></picture></a>
 <a href="https://polsantos.com"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/link-portfolio.svg"/><img src="assets/light/link-portfolio.svg" alt="portfolio" height="40"/></picture></a>
 <a href="https://www.linkedin.com/in/pol-de-los-santos-subirats/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/link-linkedin.svg"/><img src="assets/light/link-linkedin.svg" alt="linkedin" height="40"/></picture></a>
+<a href="https://www.instagram.com/pol.dlos/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/link-instagram.svg"/><img src="assets/light/link-instagram.svg" alt="instagram" height="40"/></picture></a>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/dark/education.svg"/><img src="assets/light/education.svg" alt="02 · education: data science &amp; engineering and biomedical engineering at UPC (CFIS); Spanish Scientific and International Baccalaureate"/></picture>
 

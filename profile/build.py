@@ -46,6 +46,7 @@ LINKS = [  # label, url (the buttons under the about window)
     ("mail", "mailto:delossantospol001@gmail.com"),
     ("portfolio", "https://polsantos.com"),
     ("linkedin", "https://www.linkedin.com/in/pol-de-los-santos-subirats/"),
+    ("instagram", "https://www.instagram.com/pol.dlos/"),
 ]
 
 CFIS = [
