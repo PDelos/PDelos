@@ -2,13 +2,22 @@
  "repo": "PDelos/PDelos",
  "game": {
   "id": 1,
-  "moves": "14",
+  "moves": "1444",
   "bot_first": false,
   "log": [
    {
     "who": "human",
     "user": "PDelos",
     "col": 1
+   },
+   {
+    "who": "bot",
+    "col": 4
+   },
+   {
+    "who": "human",
+    "user": "PDelos",
+    "col": 4
    },
    {
     "who": "bot",
@@ -25,32 +34,32 @@
  },
  "recent": [],
  "players": {
-  "PDelos": 1
+  "PDelos": 2
  },
  "analysis": {
   "game": 1,
-  "move": 2,
+  "move": 4,
   "col": 4,
   "sims": 400,
   "visits": [
    0.0025,
-   0.005,
-   0.0125,
-   0.705,
-   0.2025,
-   0.0675,
-   0.005
+   0.0025,
+   0.2375,
+   0.3775,
+   0.19,
+   0.1875,
+   0.0025
   ],
   "policy": [
-   0.0437,
-   0.0398,
-   0.0663,
-   0.2468,
-   0.4976,
-   0.0488,
-   0.057
+   0.0236,
+   0.0102,
+   0.3489,
+   0.3464,
+   0.1007,
+   0.1294,
+   0.0409
   ],
-  "value": 0.1251,
+  "value": 0.1708,
   "wins_now": false
  }
 }

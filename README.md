@@ -109,18 +109,18 @@ The first term teaches it to judge positions, the second to pick the moves a per
 <!-- C4:START -->
 ### ▶️ Play it
 
-**Game #1**: your turn, you play 🔴. Click a column number to drop a piece. Last moves: @PDelos played column 1, the bot answered in column 4.
+**Game #1**: your turn, you play 🔴. Click a column number to drop a piece. Last moves: @PDelos played column 4, the bot answered in column 4.
 
 | [**1**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C1&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**2**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C2&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**3**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C3&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**4**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C4&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**5**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C5&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**6**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C6&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) | [**7**](https://github.com/PDelos/PDelos/issues/new?title=c4%7Cmove%7C7&body=Just%20submit%20this%20issue%20as%20it%20is%2C%20no%20need%20to%20write%20anything.%20Within%20a%20minute%20a%20GitHub%20Action%20will%20make%20the%20move%2C%20the%20bot%20will%20answer%2C%20and%20the%20board%20on%20my%20profile%20will%20update.) |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
 | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
-| ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
-| ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ |
+| ⚪ | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | ⚪ |
+| ⚪ | ⚪ | ⚪ | 🔴 | ⚪ | ⚪ | ⚪ |
 | 🔴 | ⚪ | ⚪ | 🟡 | ⚪ | ⚪ | ⚪ |
 
-**Record vs humans:** 🤖 bot 0 wins · 🧑 humans 0 wins · 🤝 0 draws (0 games) · **Most moves:** @PDelos (1)
+**Record vs humans:** 🤖 bot 0 wins · 🧑 humans 0 wins · 🤝 0 draws (0 games) · **Most moves:** @PDelos (2)
 
 ### 🧠 What it was thinking
 
