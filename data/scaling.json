@@ -1,0 +1,30 @@
+[
+ {
+  "train_rows": 5000,
+  "test_strict": 0.6299,
+  "test_any_win": 0.8581,
+  "best_epoch": 18,
+  "minutes": 4.3
+ },
+ {
+  "train_rows": 15000,
+  "test_strict": 0.7515,
+  "test_any_win": 0.9045,
+  "best_epoch": 13,
+  "minutes": 9.5
+ },
+ {
+  "train_rows": 40000,
+  "test_strict": 0.8223,
+  "test_any_win": 0.9353,
+  "best_epoch": 11,
+  "minutes": 22.0
+ },
+ {
+  "train_rows": 110000,
+  "test_strict": 0.8574,
+  "test_any_win": 0.9495,
+  "best_epoch": 12,
+  "minutes": 65.1
+ }
+]

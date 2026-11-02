@@ -1,0 +1,64 @@
+name: Connect 4 move
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: connect4-move
+  cancel-in-progress: false
+
+jobs:
+  move:
+    if: startsWith(github.event.issue.title, 'c4|')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install NumPy (inference only, no PyTorch needed)
+        run: pip install numpy
+
+      - name: Play every open move and push the new board
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          git config user.name "connect4-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch origin "$BRANCH" && git reset --hard "origin/$BRANCH"
+            # latest trained model lives in the "connect4-model" release; fall back to the committed v1
+            gh release download connect4-model -p model.npz -D data --clobber 2>/dev/null || echo "using committed model"
+            gh issue list --state open --limit 100 --json number,title,author,createdAt > "$RUNNER_TEMP/issues.json"
+            python -m connect4.play "$RUNNER_TEMP/issues.json" "$RUNNER_TEMP/replies.json"
+            git checkout -- data/model.npz 2>/dev/null || true   # never commit the downloaded model
+            touch data/pending.txt data/games.jsonl
+            git add README.md data/state.json data/games.jsonl data/pending.txt assets/c4_progress.svg assets/c4_mind.svg
+            if git diff --cached --quiet; then echo "nothing to commit"; break; fi
+            git commit -m "connect4: play visitor move(s)"
+            if git push origin "HEAD:$BRANCH"; then break; fi
+            echo "push rejected, retrying on the latest board"
+            sleep $((attempt * 3))
+          done
+
+      - name: Reply to and close the move issues
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python - <<'EOF'
+          import json, os, subprocess, tempfile
+          path = os.path.join(os.environ["RUNNER_TEMP"], "replies.json")
+          for r in json.load(open(path)) if os.path.exists(path) else []:
+              with tempfile.NamedTemporaryFile("w", delete=False, suffix=".md") as f:
+                  f.write(r["body"])
+              subprocess.run(["gh", "issue", "comment", str(r["number"]), "--body-file", f.name], check=False)
+              subprocess.run(["gh", "issue", "close", str(r["number"])], check=False)
+          EOF

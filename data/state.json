@@ -1,0 +1,45 @@
+{
+ "repo": "PDelos/PDelos",
+ "game": {
+  "id": 1,
+  "moves": "",
+  "bot_first": false,
+  "log": [],
+  "started": "2026-11-01T13:54:58Z"
+ },
+ "stats": {
+  "games": 0,
+  "bot_wins": 0,
+  "human_wins": 0,
+  "draws": 0
+ },
+ "recent": [],
+ "players": {},
+ "analysis": {
+  "game": 0,
+  "move": 1,
+  "col": 4,
+  "sims": 400,
+  "preview": true,
+  "visits": [
+   0.005,
+   0.005,
+   0.07,
+   0.625,
+   0.1575,
+   0.1325,
+   0.005
+  ],
+  "policy": [
+   0.0565,
+   0.0333,
+   0.3223,
+   0.158,
+   0.3321,
+   0.0455,
+   0.0523
+  ],
+  "value": 0.1112,
+  "wins_now": false
+ }
+}
